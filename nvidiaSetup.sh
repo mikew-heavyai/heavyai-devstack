@@ -1,4 +1,5 @@
 # !/bin/bash
+#  This script simply configurs Nvidia drivers in a typical Linux environment.  
 
 clean_docker() {
   sudo docker volume ls -q -f driver=nvidia-docker \
@@ -57,8 +58,8 @@ nvidia_driver_check(){
 sudo docker run --gpus=all --rm nvidia/cuda:11.8.0-runtime-ubuntu20.04 nvidia-smi
 }
 
-#clean_docker
-#install_docker
+#clean_docker #Very seldom is this step required, but it is included in the standard Heavy.AI documentation
+#install_docker #Most environments already have docker installed and a more straightforward Docker install tends to work.  This step is also outlined in Heavy.AI documentation, but is most often not needed
 simple_docker_config
 install_nvidia_drivers
 nvidia_docker_runtime
