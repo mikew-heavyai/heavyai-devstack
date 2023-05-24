@@ -1,0 +1,79 @@
+# Copyright (c) Jupyter Development Team.
+# Distributed under the terms of the Modified BSD License.
+
+# JupyterHub docker-compose configuration file
+version: "3.7"
+
+services:
+
+  nginx:
+    image: nginx:latest
+    container_name: webserver
+    restart: unless-stopped
+
+    ports:
+      - 80:80
+
+    networks:
+      - jupyterhub-network
+
+    volumes:
+      - config/nginx.conf:/etc/nginx/nginx.conf
+      - /var/lib/heavyai/jupyter/nginx/log:/var/log/nginx/
+        
+
+  heavyaiserver:
+    container_name: heavyaiserver
+    image: heavyai/heavyai-ee-cuda:latest
+    restart: always
+    ipc: shareable
+    volumes:
+      - /var/lib/heavyai:/var/lib/heavyai
+    networks:
+      - jupyterhub-network
+    ports:
+      - "6273:6273"
+      - "6274:6274"
+      - "6276:6276"
+      - "6278:6278"
+
+  hub:
+    build:
+      context: .
+      dockerfile: config/Dockerfile.jupyterhub
+      args:
+        JUPYTERHUB_VERSION: latest
+
+    restart: always
+    image: jupyterhub
+    container_name: jupyterhub 
+
+    networks:
+      - jupyterhub-network
+
+    volumes:
+      - "config/jupyterhub_config.py:/srv/jupyterhub/jupyterhub_config.py:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:rw"
+      - "jupyterhub-data:/data"
+
+    ports:
+      - 8000:8000
+
+    environment:
+      # This username will be a JupyterHub admin
+      JUPYTERHUB_ADMIN: admin
+      # All containers will join this network
+      DOCKER_NETWORK_NAME: jupyterhub-network
+      # JupyterHub will spawn this Notebook image for users
+      DOCKER_NOTEBOOK_IMAGE: jupyter/base-notebook:latest
+      # Notebook directory inside user image
+      DOCKER_NOTEBOOK_DIR: /home/jovyan/work
+      # Using this run command
+      DOCKER_SPAWN_CMD: start-singleuser.sh
+
+volumes:
+  jupyterhub-data:
+
+networks:
+  jupyterhub-network:
+    name: jupyterhub-network

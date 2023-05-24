@@ -1,0 +1,43 @@
+[
+    {
+        "username": "admin",
+        "database": "heavyai",
+        "password": "HyperInteractive",
+        "enableJupyter": true,
+        "feature_flags": {
+            "ui/default_theme": "dark",
+            "ui/enable_new_combo_chart": true,
+            "ui/sticky_simple_filter_panel": false,
+            "ui/enable_linked_zoom": true,
+            "ui/dashboard_tabs": true,
+            "ui/shift_to_zoom": false,
+            "ui/enable_crosslink_panel": true,
+            "ui/enable_dashboard_shared_custom_sql": true,
+            "ui/enable_custom_source_manager": true,
+            "ui/geojoined-bounding-boxes": true,
+            "ui/hide_deprecated_chart_types": false,
+            "ui/map_export_limit": 50000000,
+            "ui/table_export_limit": 50000000,
+            "performance/crossfilter_pause_chart_button": true,
+            "ui/enable_crosslink_panel": true,
+            "ui/enable_custom_source_manager": true,
+            "ui/raster-chart-kebab-visibility-toggle":true,
+            "ui/enable_dashboard_shared_custom_sql": true,
+            "ui/enable_global_custom_sql": true,
+            "ui/enable_map_exports": "true",
+            "ui/enable_dashboard_shared_custom_sql": true,
+            "ui/enable_unrestricted_percentage_view_pie_chart": "true",
+            "ui/geojoined-bounding-boxes": true,
+            "ui/sticky_simple_filter_panel": false,
+            "ui/table_params_in_param_manager": true,
+            "dev/omni_sql_plus_plus_parse_in_strings": true,
+            "dev/parse_crossfilter_tokens": true,
+   	    "ui/enable_crossfilter_replay": true,
+	    "ui/enable_chart_addons": true,
+	    "performance/query_cache_duration": 240000,
+            "performance/query_cache_size": 50,
+            "performance/vega_cache_duration" : 240000,
+            "performance/vega_cache_size" : 40
+       	 }
+  }
+]
