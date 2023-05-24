@@ -1,0 +1,12 @@
+{
+    "versionOptions": [
+        {
+            "name": "Latest Release",
+            "type": "release",
+            "imageName": "heavyai/heavyai-ee-cuda:latest",
+            "filepath": "",
+            "filename": ""
+        }
+
+    ]
+  }
