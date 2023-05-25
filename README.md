@@ -20,8 +20,9 @@ This stack has very simple mostly default values for all the components and is r
 6. You can now open up a jupyter envrionment using the icon in Immerse.
 7. On the first launch of jupyter, enter your user name and no value for password.  This will create a jupyter environment for that user.
 
-
-
+## Ports
+- This config uses a reverse proxy to route all web traffic through port 80.  So when you connect to Immerse, you connect on port 80.  This can certainly be changed, but this is the only port that needs to be externally exposed.
+- Jupyter connects on port 6274.  So this port needs to be available to TCP traffic.
 
 ## Jupyter Config
 In the jupyter environment, you need to configure the necessary kernel configs and python libraries.  The easiest way to do this is using the `Terminal` in Jupyter.  
