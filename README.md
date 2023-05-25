@@ -6,7 +6,7 @@ A simple development stack for HeavyAI using docker compose.  It includes two ke
     - Nginx - reverse proxy to consolidate the exposed ports and facilitate jupyterhub integration with Immerse
     - jupyterhub - jupyter environment for multiple users.  This is a very basic deployment of jupyter that does create multiple user environments but uses dummyAuthentication to keep things simple.
 
-This stack is configured with mostly default values for all the components and is really only applicable for development or demo purposes.  It has not been optimized for any production scale or usage.  It has been tested with a couple of cloud provider images runing Ubuntu, but the install is not been designed to handle unique or complex install scenarios.  It works well from a clean sheet, but on existing environments - your milage may vary.
+**This stack is configured with mostly default values for all the components and is really only applicable for development or demo purposes.**  It has not been optimized for any production scale or usage.  It has been tested with a couple of cloud provider images runing Ubuntu, but the install is not been designed to handle unique or complex install scenarios.  It works well from a clean sheet, but on existing environments - your milage may vary.
 
 ## Usage Notes
 - This configuration will download public docker images from the internet.  If you do not have access to public repositories, you may have to take an alternate approach.
