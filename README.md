@@ -20,7 +20,7 @@ A simple development stack for HeavyAI using docker compose.  It includes two ke
 4. Launch the environment using the command:
 `docker-compose up -d`
 
-5. Launch a browser pointing at port 80 on the server and you should be prompted to enter your Heavy.AI license.
+5. Launch a browser pointing at port 8001 on the server and you should be prompted to enter your Heavy.AI license.
 6. You can now open up a jupyter envrionment using the icon in Immerse.
 7. On the first launch of jupyter, enter your user name and no value for password.  This will create a jupyter environment for that user.
 
