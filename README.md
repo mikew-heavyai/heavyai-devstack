@@ -25,7 +25,7 @@ This stack is configured with mostly default values for all the components and i
 7. On the first launch of jupyter, enter your user name and no value for password.  This will create a jupyter environment for that user.
 
 ## Ports
-- This config uses a reverse proxy to route all web traffic through port 80.  So when you connect to Immerse, you connect on port 80.  This can certainly be changed, but this is the only port that needs to be externally exposed.
+- This config uses a reverse proxy to route all web traffic through port 8001.  So when you connect to Immerse, you connect on port 8001.  This can certainly be changed, but this is the only port that needs to be externally exposed.  To change this port change the `EXTERNAL_PORT` variable in the `install.sh` script.
 - Jupyter connects on port 6274.  So this port needs to be available to TCP traffic.
 
 ## Jupyter Config

@@ -9,6 +9,7 @@ SERVERS_JSON_FILE="servers.json"
 NGINX_CONF_FILE="nginx.conf"
 JUPYTERHUB_CONF_FILE="jupyterhub_config.py"
 DOCKERFILE_FILE="Dockerfile.jupyterhub"
+EXTERNAL_PORT="8001"
 
 createFiles(){
 mkdir -p $CONFIG_TMP
@@ -28,7 +29,7 @@ services:
     restart: unless-stopped
 
     ports:
-      - 80:80
+      - $EXTERNAL_PORT:80
 
     networks:
       - jupyterhub-network
