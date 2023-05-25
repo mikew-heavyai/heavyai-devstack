@@ -24,24 +24,49 @@ This stack has very simple mostly default values for all the components and is r
 
 
 ## Jupyter Config
+In the jupyter environment, you need to configure the necessary kernel configs and python libraries.  The easiest way to do this is using the `Terminal` in Jupyter.  
+- From Immerse UI select the Jupyter icon
+- The first time you launch Jupyter you will be prompted for a username and password.  Simply enter the user name (e.g. 'admin') with no password.  This will launch a new Jupyterlab environment under that username. 
+- From the Jupyter UI, select the `Terminal` icon.  This will allow you to enter the commands below to configure two kernel configs to use.
 
-    mamba create -n heavyai-cpu -c conda-forge -c defaults   --no-channel-priority heavyai pyheavydb pytest shapely geopandas ibis-framework rbc ibis-heavyai
-![create-cpu] (./docs/create-cpu.png "fig1" )
+### heavyai-cpu kernel
+```bash   
+(base) jovyan@c078f10beb41:~$ mamba create -n heavyai-cpu -c conda-forge -c defaults   --no-channel-priority heavyai pyheavydb pytest shapely geopandas ibis-framework rbc ibis-heavyai
 
-    conda activate heavyai-cpu
+(base) jovyan@c078f10beb41:~$ conda activate heavyai-cpu
 
-    mamba install ipykernel
+(heavyai-cpu) jovyan@c078f10beb41:~$ mamba install ipykernel
 
-    python -m ipykernel install --user --name=heavyai-cpu
+(heavyai-cpu) jovyan@c078f10beb41:~$ python -m ipykernel install --user --name=heavyai-cpu
 
-    conda deactivate
+(heavyai-cpu) jovyan@c078f10beb41:~$ conda deactivate
+```
 
 
+### heavai-gpu kernel
+```bash
+(base) jovyan@c078f10beb41:~$ mamba create -n heavyai-gpu -c rapidsai -c nvidia -c conda-forge -c defaults --no-channel-priority cudf heavyai pyheavydb pytest shapely geopandas pyarrow=*=*cuda ibis-framework rbc ibis-heavyai
+
+(base) jovyan@c078f10beb41:~$ conda activate heavyai-gpu
+
+(heavyai-gpu) jovyan@c078f10beb41:~$ mamba install ipykernel
+
+(heavyai-gpu) jovyan@c078f10beb41:~$ python -m ipykernel install --user --name=heavyai-gpu
+
+(heavyai-gpu) jovyan@c078f10beb41:~$ conda deactivate
+```
+    
+## Test connection
+Now you can open a new notebook using one of the two kernels defined above.  Simply open up a notebook and try the following commands in a cell inserting the server address below in the `my.server.address`
+```
 from heavyai import connect
 con = connect(user='admin',password="HyperInteractive",host='my.server.address',dbname='heavyai',port='6274',protocol='binary')
 
-mamba create -n heavyai-gpu -c rapidsai -c nvidia -c conda-forge -c defaults --no-channel-priority cudf heavyai pyheavydb pytest shapely geopandas pyarrow=*=*cuda ibis-framework rbc ibis-heavyai
-conda activate heavyai-gpu
-mamba install ipykernel
-python -m ipykernel install --user --name=heavyai-gpu
-conda deactivate
+con.get_tables()
+
+['heavyai_us_states', 'heavyai_us_counties', 'heavyai_countries']
+```
+
+
+
+You are now ready to start loading data and use your development stack.  You can load data via Immerse, define dashboards, and use Jupyter to execute advance analytics.
