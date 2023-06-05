@@ -33,7 +33,7 @@ In the jupyter environment, you need to configure the necessary kernel configs a
 - From Immerse UI select the Jupyter icon
 - The first time you launch Jupyter you will be prompted for a username and password.  Simply enter the user name (e.g. 'admin') with no password.  This will launch a new Jupyterlab environment under that username. 
 - From the Jupyter UI, select the `Terminal` icon.  This will allow you to enter the commands below to configure two kernel configs to use.
-
+<!---
 ### heavyai-cpu kernel
 ```bash   
 (base) jovyan@c078f10beb41:~$ mamba create -n heavyai-cpu -c conda-forge -c defaults   --no-channel-priority heavyai pyheavydb pytest shapely geopandas ibis-framework rbc ibis-heavyai
@@ -46,7 +46,7 @@ In the jupyter environment, you need to configure the necessary kernel configs a
 
 (heavyai-cpu) jovyan@c078f10beb41:~$ conda deactivate
 ```
-
+--->
 
 ### heavai-gpu kernel
 ```bash
