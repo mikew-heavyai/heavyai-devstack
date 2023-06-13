@@ -180,6 +180,7 @@ cat >$NGINX_CONF_FILE <<nginxEnd
 events {}
 
 http {
+  client_max_body_size 10000M;
   map \$http_upgrade \$connection_upgrade {
     default upgrade;
     ''      close;
