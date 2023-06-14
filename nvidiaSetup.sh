@@ -17,7 +17,7 @@ install_docker(){
    stable"
    
   sudo apt update
-  sudo apt install docker-ce docker-ce-cli containerd.io
+  sudo apt install docker-ce docker-ce-cli containerd.io docker-compose jq
   sudo usermod  --append --groups docker $USER
   sudo docker run hello-world
   }
