@@ -109,7 +109,7 @@ allowed-import-paths = ["/var/lib/heavyai/import"]
 allowed-export-paths = ["/"]
 idle-session-duration = 43200
 enable-logs-system-tables = true
-enable-executor-resource-mgr=0
+enable-executor-resource-mgr= true
 
 [web]
 port = 6273
