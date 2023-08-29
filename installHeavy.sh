@@ -46,6 +46,8 @@ services:
     ipc: shareable
     volumes:
       - /var/lib/heavyai:/var/lib/heavyai
+      - /var/lib/heavyai/odbc/odbc.ini:/etc/odbc.ini
+      - /var/lib/heavyai/odbc/odbcinst.ini:/etc/odbcinst.ini
     networks:
       - jupyterhub-network
     ports:
@@ -53,6 +55,10 @@ services:
       - "6274:6274"
       - "6276:6276"
       - "6278:6278"
+    command: sh -c "apt-get update && apt-get install -y odbc-postgresql unixodbc
+                    wget -P /tmp https://sfc-repo.snowflakecomputing.com/odbc/linux/3.1.0/snowflake-odbc-3.1.0.x86_64.deb
+                    dpkg -i /tmp/snowflake-odbc-3.1.0.x86_64.deb
+                    rm /tmp/snowflake-odbc-2.25.2.x86_64.deb"
 
   hub:
     build:
@@ -331,6 +337,7 @@ installFiles(){
 
   
   sudo mkdir /var/lib/heavyai
+  sudo mkdir /var/lib/heavyai/odbc
   sudo chown ubuntu /var/lib/heavyai
   sudo mkdir /var/lib/heavyai/import
   sudo mkdir /var/lib/heavyai/jupyter
