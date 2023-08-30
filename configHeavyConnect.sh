@@ -1,4 +1,4 @@
-
+#!/bin/bash
 cat > "/var/lib/heavyai/odbc/odbcinst.ini" <<odbcinstiniEnd
 [ODBC Drivers]
 Snowflake=Installed
