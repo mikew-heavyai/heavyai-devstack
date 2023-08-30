@@ -44,7 +44,6 @@ services:
     image: $DOCKER_IMAGE
     restart: always
     ipc: shareable
-    entrypoint: ["/tmp/install_odbc_drivers.sh"]
     volumes:
       - /var/lib/heavyai:/var/lib/heavyai
       - /var/lib/heavyai/odbc/odbc.ini:/etc/odbc.ini
